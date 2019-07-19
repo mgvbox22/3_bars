@@ -33,8 +33,8 @@ def distance(bar_coordinates, longitude, latitude):
     a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
     c = 2 * asin(sqrt(a))
     # Radius of earth in kilometers is 6371
-    earth_radius = 6371
-    km = earth_radius * c
+    EARTH_RADIUS = 6371
+    km = EARTH_RADIUS * c
     return km
 
 
