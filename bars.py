@@ -1,4 +1,3 @@
-#  -*- coding:  utf-8
 import json
 from math import radians, cos, sin, asin, sqrt
 
@@ -21,20 +20,21 @@ def get_closest_bar(data, longitude, latitude):
     return min(data["features"], key=lambda x: distance(x["geometry"]["coordinates"], longitude, latitude))
 
 
-def distance(bar_xy, longitude, latitude):
+def distance(bar_coordinates, longitude, latitude):
     """
     Calculate the great circle distance between bar and point coordinate
     on the earth (specified in decimal degrees)
     """
     # convert decimal degrees to radians
-    lon1, lat1, lon2, lat2 = map(radians, [bar_xy[0], bar_xy[1], longitude, latitude])
+    lon1, lat1, lon2, lat2 = map(radians, [bar_coordinates[0], bar_coordinates[1], longitude, latitude])
     # haversine formula
     dlon = lon2 - lon1
     dlat = lat2 - lat1
     a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
     c = 2 * asin(sqrt(a))
     # Radius of earth in kilometers is 6371
-    km = 6371 * c
+    earth_radius = 6371
+    km = earth_radius * c
     return km
 
 
