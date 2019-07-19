@@ -40,10 +40,10 @@ def distance(bar_coordinates, longitude, latitude):
 
 if __name__ == '__main__':
     bars_data_file = "bars.json"
-    data = load_data(bars_data_file)
-    biggest = get_biggest_bar(data)
-    smallest = get_smallest_bar(data)
-    closest = get_closest_bar(data, 37.603167143241507, 55.623358258831558)
+    bars = load_data(bars_data_file)
+    biggest = get_biggest_bar(bars)
+    smallest = get_smallest_bar(bars)
+    closest = get_closest_bar(bars, 37.603167143241507, 55.623358258831558)
     print(biggest["properties"]["Attributes"]["Name"], biggest["properties"]["Attributes"]["SeatsCount"])
     print(smallest["properties"]["Attributes"]["Name"], smallest["properties"]["Attributes"]["SeatsCount"])
     print(closest["properties"]["Attributes"]["Name"])
