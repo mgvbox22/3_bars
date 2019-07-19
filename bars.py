@@ -8,16 +8,16 @@ def load_data(filepath):
     return _data_
 
 
-def get_biggest_bar(data):
-    return max(data["features"], key=lambda x: x["properties"]["Attributes"]["SeatsCount"])
+def get_biggest_bar(bars_data):
+    return max(bars_data["features"], key=lambda x: x["properties"]["Attributes"]["SeatsCount"])
 
 
-def get_smallest_bar(data):
-    return min(data["features"], key=lambda x: x["properties"]["Attributes"]["SeatsCount"])
+def get_smallest_bar(bars_data):
+    return min(bars_data["features"], key=lambda x: x["properties"]["Attributes"]["SeatsCount"])
 
 
-def get_closest_bar(data, longitude, latitude):
-    return min(data["features"], key=lambda x: distance(x["geometry"]["coordinates"], longitude, latitude))
+def get_closest_bar(bars_data, longitude, latitude):
+    return min(bars_data["features"], key=lambda x: distance(x["geometry"]["coordinates"], longitude, latitude))
 
 
 def distance(bar_coordinates, longitude, latitude):
@@ -40,10 +40,10 @@ def distance(bar_coordinates, longitude, latitude):
 
 if __name__ == '__main__':
     bars_data_file = "bars.json"
-    bars_data = load_data(bars_data_file)
-    biggest = get_biggest_bar(bars_data)
-    smallest = get_smallest_bar(bars_data)
-    closest = get_closest_bar(bars_data, 37.603167143241507, 55.623358258831558)
+    data = load_data(bars_data_file)
+    biggest = get_biggest_bar(data)
+    smallest = get_smallest_bar(data)
+    closest = get_closest_bar(data, 37.603167143241507, 55.623358258831558)
     print(biggest["properties"]["Attributes"]["Name"], biggest["properties"]["Attributes"]["SeatsCount"])
     print(smallest["properties"]["Attributes"]["Name"], smallest["properties"]["Attributes"]["SeatsCount"])
     print(closest["properties"]["Attributes"]["Name"])
