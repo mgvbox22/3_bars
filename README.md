@@ -1,6 +1,6 @@
 # Ближайшие бары
 
-[FIXME. Здесь будет описание проекта]
+Решение задачи "Бары!" (https://devman.org/challenges/3/)
 
 # Как запустить
 
@@ -16,6 +16,9 @@ $ python bars.py # possibly requires call of python3 executive instead of just p
 ```
 
 Запуск на Windows происходит аналогично.
+
+# Используются модули
+json, math
 
 # Цели проекта
 
