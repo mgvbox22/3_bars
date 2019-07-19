@@ -33,8 +33,8 @@ def distance(bar_coordinates, longitude, latitude):
     a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
     c = 2 * asin(sqrt(a))
     # Radius of earth in kilometers is 6371
-    EARTH_RADIUS = 6371
-    km = EARTH_RADIUS * c
+    earth_radius = 6371
+    km = earth_radius * c
     return km
 
 
@@ -43,7 +43,8 @@ if __name__ == '__main__':
     bars = load_data(bars_data_file)
     biggest = get_biggest_bar(bars)
     smallest = get_smallest_bar(bars)
-    closest = get_closest_bar(bars, 37.603167143241507, 55.623358258831558)
+    long1, lat1 = 37.603167143241507, 55.623358258831558 # bar КОФЕЙНЯ из файла
+    closest = get_closest_bar(bars, long1, lat1)
     print(biggest["properties"]["Attributes"]["Name"], biggest["properties"]["Attributes"]["SeatsCount"])
     print(smallest["properties"]["Attributes"]["Name"], smallest["properties"]["Attributes"]["SeatsCount"])
     print(closest["properties"]["Attributes"]["Name"])
